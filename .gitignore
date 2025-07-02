@@ -1,0 +1,8 @@
+# OCR evaluation files to ignore
+*.csv
+*.pdf
+Serica_AdobeOCR/
+__pycache__/
+*.pyc
+Serica_OCRmyPDF/
+Serica_raw/

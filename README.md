@@ -42,47 +42,51 @@ Document A: 2.3 errors/100 words, 92% valid words → "Excellent" OCR
 Document B: 15.7 errors/100 words, 67% valid words → "Poor" OCR
 ```
 
-## ⚠️ Important Limitations
+## ⚠️ Limitations & Constraints
 
-**This tool provides a glimpse of word-level accuracy only.** It does **not** evaluate:
+**This tool provides a glimpse of word-level accuracy only.** Understanding these limitations is crucial for proper interpretation of results.
 
-### What It Doesn't Check
-- **Text Coherence**: Whether sentences make logical sense
-- **Missing Content**: Text that OCR completely failed to detect
-- **Layout Preservation**: Tables, formatting, or structure retention
-- **Semantic Accuracy**: Whether technical terms are correctly interpreted
-- **Completeness**: How much of the original document was captured
+### What This Framework Cannot Do
+1. **Detect Missing Text**: Won't identify content OCR completely missed
+2. **Evaluate Text Coherence**: Doesn't check if sentences make logical sense
+3. **Structure Analysis**: Ignores layout, tables, or formatting preservation
+4. **Semantic Accuracy**: Whether technical terms are correctly interpreted
+5. **Completeness Assessment**: How much of the original document was captured
+6. **Absolute Quality Measurement**: Provides relative comparison, not absolute accuracy
 
 ### Technical Constraints
 - **Language Dependent**: Optimised for English text (other languages supported but less accurate)
 - **Context Blind**: Doesn't understand document type or domain-specific terminology
-- **Surface Level**: Focuses on character/word accuracy, not meaning preservation
-- **PDF Dependent**: Quality depends on PDF text extraction capabilities
+- **Surface Level Analysis**: Focuses on character/word accuracy, not meaning preservation
+- **PDF Extraction Dependent**: Quality limited by PyPDF2's text extraction capabilities
 - **Grammar Model Limits**: LanguageTool may miss domain-specific errors or flag technical terms
+- **Memory Intensive**: Large documents may require significant RAM
+- **Processing Speed**: LanguageTool analysis can be slow for large document sets
 
 ### Scope Boundaries
 - **Quality Assessment Only**: Tells you *how well* OCR worked, not *what went wrong*
 - **Comparative Tool**: Best used for comparing OCR approaches, not absolute quality judgment
 - **Rapid Screening**: Designed for quick evaluation, not comprehensive analysis
+- **English-Centric**: Optimised for English, less accurate for other languages
 
 ## 🚀 Installation & Setup
 
 ### Prerequisites
 
-#### 1. Java 17+ (Required)
-LanguageTool requires **Java 17 or higher**. This tool was tested on Java 24 (recommended)
+#### 1. Java 24 (Required)
+LanguageTool requires **Java 17 or higher**. This framework was developed and tested specifically with **Java 24**.
 
 **Check current version:**
 ```bash
 java -version
 ```
 
-**Install if needed:**
-1. Download from https://www.oracle.com/java/technologies/downloads/?er=221886
-   - **Recommended**: Java 21 LTS (stable)
-   - **Latest**: Java 24+ (cutting edge)
+**Install Java 24 (recommended):**
+1. Download Java 24 from https://www.oracle.com/java/technologies/downloads/?er=221886
 2. Install and add to system PATH
-3. Restart terminal and verify: `java -version` shows 17+
+3. Restart terminal and verify: `java -version` shows 24+
+
+**⚠️ Important**: The script does not verify your Java version automatically. You must ensure Java 17+ is properly installed and accessible, or LanguageTool will fail during initialization.
 
 #### 2. Python Dependencies
 ```bash
@@ -185,22 +189,6 @@ Open CSV files and compare "Errors per 100 Words" - lower values indicate better
 - **5-10 errors/100 words**: Fair OCR, moderate editing required
 - **>20 errors/100 words**: Poor OCR, consider re-processing with different settings
 
-## 🚧 Limitations & Constraints
-
-### What This Framework Cannot Do
-1. **Detect Missing Text**: Won't identify content OCR completely missed
-2. **Evaluate Meaning**: Doesn't check if text makes logical sense
-3. **Structure Analysis**: Ignores layout, tables, or formatting preservation
-4. **Domain Expertise**: May flag technical terms as errors
-5. **Absolute Quality**: Provides relative comparison, not absolute accuracy measurement
-
-### Technical Limitations
-- **PDF Extraction Dependent**: Quality limited by PyPDF2's text extraction capabilities
-- **English-Centric**: Optimised for English, less accurate for other languages
-- **Grammar Model Constraints**: May miss context-specific errors
-- **Memory Intensive**: Large documents may require significant RAM
-- **Processing Speed**: LanguageTool analysis can be slow for large document sets
-
 ## 🔮 Future Enhancements
 
 ### Planned Improvements
@@ -240,7 +228,7 @@ Open CSV files and compare "Errors per 100 Words" - lower values indicate better
 ### Common Issues
 
 **"Java version < 17" error**
-- Install Java 21+ from Oracle's website
+- Install Java 24 from Oracle's website
 - Update system PATH to point to new Java installation
 
 **"LanguageTool initialization failed"**
@@ -264,10 +252,8 @@ OCR-eval/
 ├── simple_ocr_evaluator.py    # Main evaluation script
 ├── requirements.txt           # Python dependencies  
 ├── README.md                 # This documentation
-└── results.csv              # Generated output file
+└── results.csv              # Generated outpugiyt file
 ```
-
-
 
 **Ready to evaluate your OCR quality?** Start with a test run:
 ```bash

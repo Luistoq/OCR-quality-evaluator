@@ -120,7 +120,7 @@ class LanguageQualityEvaluator:
         if not flagged_positions:
             return total_words
         
-        # Simple approximation: assume each error affects 1-2 words on average
+        # A single spelling error affects one word, while a grammar error might span two or more; 1.5 is a balanced average
         estimated_affected_words = len(flagged_positions) * 1.5
         valid_words = max(0, total_words - estimated_affected_words)
         
